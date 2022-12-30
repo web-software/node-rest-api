@@ -10,7 +10,7 @@ export let people = [
     hairColor: 'red',
   },
   {
-    name: 'Kim',
+    name: 'Angela',
     age: 28,
     hairColor: 'blonde',
   },

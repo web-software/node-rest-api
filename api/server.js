@@ -1,8 +1,10 @@
 import express from 'express';
+import bodyParser from 'body-parser';
 import { promises as fs } from 'fs';
 import { people } from './people-data';
 
 let app = express();
+app.use(bodyParser.json());
 
 app.get('/hello', (req, res) => {
   res.send('Hello!');
@@ -24,6 +26,12 @@ app.get('/file-data', async (req, res) => {
   let data = await fs.readFile(__dirname + '/people-data.json');
   let people = JSON.parse(data);
 
+  res.json(people);
+});
+
+app.post('/people', (req, res) => {
+  let newPerson = req.body;
+  people.push(newPerson);
   res.json(people);
 });
 
